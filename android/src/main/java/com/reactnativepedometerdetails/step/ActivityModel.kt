@@ -1,4 +1,4 @@
-package com.reactnativepedometerdetails.step.ExtCommon
+package com.reactnativepedometerdetails.step
 
 
 class ActivityModel(val _id: Int,

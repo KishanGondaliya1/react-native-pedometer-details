@@ -13,12 +13,20 @@ class RebootActionReceiver : BroadcastReceiver() {
             return
         }
 
-        val action = intent.action
-        action?.let {
-            if (action == Intent.ACTION_BOOT_COMPLETED || action == Intent.ACTION_LOCKED_BOOT_COMPLETED) {
-                val serviceIntent = Intent(context, StepCounterService::class.java)
-                ContextCompat.startForegroundService(context, serviceIntent)
+        try {
+            val action = intent.action
+            action?.let {
+                if (action == Intent.ACTION_BOOT_COMPLETED || action == Intent.ACTION_LOCKED_BOOT_COMPLETED) {
+
+
+                    println("from reboot ============")
+//                if (AppPreferences.shouldRunCountingService) {
+                    val serviceIntent = Intent(context, StepCounterService::class.java)
+                    ContextCompat.startForegroundService(context, serviceIntent)
+//                }
+                }
             }
+        } catch (e:Exception) {
         }
     }
 }
